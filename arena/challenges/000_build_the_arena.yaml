@@ -1,0 +1,101 @@
+# Challenge #0: Build Your Own Arena
+# The meta-challenge - the arena builds itself
+
+id: "000"
+name: "Build Your Own Arena"
+type: meta
+difficulty: hard
+
+description: |
+  The first challenge of the AI Dream Team: design and build the
+  infrastructure for challenges to come. The arena builds itself.
+
+prompt: |
+  You are participating in Challenge #0 of the AI Dream Team arena.
+
+  YOUR MISSION:
+  Design and build infrastructure for an AI challenge arena where multiple
+  AI agents (Claude, Gemini, Codex) can compete, collaborate, and evolve.
+
+  REQUIREMENTS:
+  1. Challenge System
+     - Format for defining challenges (you're looking at one now)
+     - Support for different challenge types (build, fix, optimize, etc.)
+     - Evaluation criteria and scoring
+
+  2. Agent Orchestration
+     - Spawn multiple agents in parallel
+     - Each agent works on separate git branch
+     - Capture and compare outputs
+
+  3. Knowledge Persistence
+     - Learn from each challenge
+     - Accumulate patterns and best practices
+     - Feed learnings into future challenges
+
+  4. Evaluation Framework
+     - Compare agent outputs
+     - Score against criteria
+     - Generate comparison reports
+
+  CONSTRAINTS:
+  - Must work with vanilla Claude Code as foundation
+  - Must support Linux (tmux for parallel sessions)
+  - Should be extensible for future challenge types
+
+  DELIVERABLES:
+  - Working orchestrator script
+  - Evaluator framework
+  - Knowledge persistence system
+  - Documentation
+
+  Be creative. Push boundaries. Build something you'd be proud to work in.
+
+evaluation:
+  criteria:
+    - name: functionality
+      weight: 3
+      description: "Does the arena work? Can it run challenges?"
+    - name: elegance
+      weight: 2
+      description: "Is the design clean and intuitive?"
+    - name: extensibility
+      weight: 2
+      description: "Can it grow with new challenge types?"
+    - name: creativity
+      weight: 2
+      description: "Novel ideas? Interesting features?"
+    - name: documentation
+      weight: 1
+      description: "Is it well documented?"
+
+  automated:
+    - type: syntax
+      command: "python3 -m py_compile agents/spawner/*.py"
+    - type: test
+      command: "python3 -m pytest tests/ -v"
+
+constraints:
+  time_limit: 0  # No limit for the first challenge
+  allowed_paths:
+    - "*"  # Full access
+
+agents:
+  count: 3
+  types:
+    - claude
+    - gemini
+    - codex
+  model_tier: heavy  # Use the best for this one
+
+git:
+  branch_prefix: "challenge/000/agent"
+  base_branch: "main"
+
+metadata:
+  author: "dream-team"
+  created: "2025-01-16"
+  tags:
+    - "meta"
+    - "infrastructure"
+    - "first-challenge"

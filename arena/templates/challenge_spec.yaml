@@ -1,0 +1,124 @@
+# Challenge Specification Template
+# Copy this file and customize for your challenge
+
+# Unique identifier for this challenge
+id: challenge_001
+
+# Human-readable name
+name: "Example Challenge"
+
+# Challenge type: build | fix | optimize | reverse | design | explore | create | impossible | meta | chaos
+type: build
+
+# Difficulty: trivial | easy | medium | hard | nightmare
+difficulty: medium
+
+# Brief description
+description: |
+  A short description of what this challenge is about.
+  Can span multiple lines.
+
+# The full prompt given to agents
+prompt: |
+  Your detailed instructions here.
+
+  Be specific about:
+  - What to build/fix/optimize
+  - Constraints and requirements
+  - Expected deliverables
+  - Success criteria
+
+# Optional: Different prompts for specialized agents (Phase 2)
+specialized_prompts:
+  performance: |
+    Focus on performance optimization...
+  ux: |
+    Focus on user experience...
+  robustness: |
+    Focus on error handling and edge cases...
+
+# Evaluation criteria (scored 1-10)
+evaluation:
+  criteria:
+    - name: correctness
+      weight: 3
+      description: "Does it work as specified?"
+    - name: code_quality
+      weight: 2
+      description: "Is the code clean and maintainable?"
+    - name: creativity
+      weight: 1
+      description: "Novel or elegant solutions?"
+    - name: completeness
+      weight: 2
+      description: "Are all requirements addressed?"
+
+  # Automated checks (optional)
+  automated:
+    - type: test
+      command: "npm test"
+    - type: lint
+      command: "npm run lint"
+    - type: build
+      command: "npm run build"
+
+  # Files to compare across agents
+  compare_files:
+    - "src/**/*.ts"
+    - "README.md"
+
+# Constraints
+constraints:
+  # Time limit in minutes (0 = unlimited)
+  time_limit: 30
+
+  # Allowed file modifications
+  allowed_paths:
+    - "src/"
+    - "tests/"
+
+  # Forbidden actions
+  forbidden:
+    - "Do not modify package.json"
+    - "Do not add external dependencies"
+
+# Resources provided
+resources:
+  # Files to read before starting
+  context_files:
+    - "docs/architecture.md"
+    - "src/types.ts"
+
+  # Reference links
+  references:
+    - "https://example.com/docs"
+
+# Agents to run
+agents:
+  # Number of parallel runs
+  count: 3
+
+  # Agent types to use
+  types:
+    - claude
+    - gemini
+    - codex
+
+  # Model tier: fast | default | heavy
+  model_tier: default
+
+# Git configuration
+git:
+  # Create separate branches for each agent
+  branch_prefix: "challenge/{id}/agent"
+
+  # Base branch to fork from
+  base_branch: "main"
+
+# Metadata
+metadata:
+  author: "human"
+  created: "2025-01-16"
+  tags:
+    - "example"
+    - "template"
